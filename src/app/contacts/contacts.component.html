@@ -1,7 +1,9 @@
-<div class="mat-card">
-    <div *ngFor = "let contact of contacts">
-        <div class="">{{contact.first_name}}</div>
-        <div class="">{{contact.last_name}}</div>
-        <div class="">{{contact.phone}}</div>
-    </div>
-</div>
+<md-card>
+    <md-list>
+        <md-list-item class=""  *ngFor = "let contact of contacts">
+            <md-icon md-list-icon>note</md-icon>
+            <h4 md-line>{{contact.first_name}} {{contact.last_name}}</h4>
+            <p md-line> {{contact.phone}} </p>
+        </md-list-item>
+    </md-list>
+</md-card>

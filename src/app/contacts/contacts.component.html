@@ -1,9 +1,34 @@
+<md-card *ngIf="con2add">
+    <form [formGroup]="addContactForm" (submit)="addContact()">
+        <div formGroupName="name">
+            <label for="first_name">First Name</label>
+            <input type="text" id="first_name" [(ngModel)]="first_name" class="form-control" formControlName="first_name" placeholder="firstname" required>
+            <label for="last_name">Last Name</label>
+            <input type="text" id="last_name" [(ngModel)]="last_name" class="form-control" formControlName="last_name" placeholder="lastname" required>
+            <label for="phone">Phone</label>
+            <input type="text" id="phone" [(ngModel)]="phone" class="form-control" formControlName="phone" placeholder="phone" required>
+        </div>
+        <button type="submit" class="btn btn-primary" [disabled]="!addContactForm.valid">Submit</button>
+    </form>
+</md-card>
+
 <md-card>
     <md-list>
         <md-list-item class=""  *ngFor = "let contact of contacts">
             <md-icon md-list-icon>note</md-icon>
             <h4 md-line>{{contact.first_name}} {{contact.last_name}}</h4>
             <p md-line> {{contact.phone}} </p>
+
+            <md-button-toggle class="" (click)="deleteContact(contact._id)">Delete</md-button-toggle>
         </md-list-item>
     </md-list>
+    <md-button-toggle *ngIf="!con2add" class="mat-primary" (click)="this.con2add = true; ">Add</md-button-toggle>
+    <md-button-toggle *ngIf="con2add" class="" (click)="this.con2add = false;">Cancel</md-button-toggle>
 </md-card>
+
+<!--<md-card>
+    <md-card-actions layout="row" layout-align="end center">
+        <md-button>Action 1</md-button>
+        <md-button>Action 2</md-button>
+    </md-card-actions>
+</md-card>-->

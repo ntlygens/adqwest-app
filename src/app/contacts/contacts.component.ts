@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ContactService } from './contact.service';
 import { Contact } from './contact.enum';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 
 @Component({
@@ -16,13 +17,60 @@ export class ContactsComponent implements OnInit {
     last_name: string;
     phone: number;
 
-    constructor( private contactSrvc: ContactService) { }
+    con2add: boolean;
+    addContactForm: FormGroup;
+
+    constructor(
+        private contactSrvc: ContactService,
+        private fb: FormBuilder
+    ) { this.con2add = false; }
 
     ngOnInit() {
+        // retrieve contacts on start
         this.contactSrvc.getContacts()
             .subscribe( contacts =>
                 this.contacts = contacts
             );
+
+        // validate formbuilder form
+        this.addContactForm = this.fb.group( {
+            name: this.fb.group( {
+                first_name: ['', [Validators.required, Validators.minLength( 2)]],
+                last_name: ['', [Validators.required, Validators.minLength( 2)]],
+                phone: ['', Validators.required]
+            })
+        });
+    }
+
+    addContact() {
+        const newContact = {
+            first_name: this.first_name,
+            last_name: this.last_name,
+            phone: this.phone
+        };
+
+        if (this.addContactForm.dirty && this.addContactForm.valid) {
+            this.contactSrvc.addContacts(newContact)
+                .subscribe(contact => {
+                    this.contacts.push(contact);
+                });
+        }
+        this.addContactForm.reset();
+        this.con2add = false;
+    }
+
+    deleteContact(id: any) {
+        this.contactSrvc.deleteContacts(id)
+            .subscribe( data => {
+                if (data.n === 1) {
+                    this.contacts.forEach( (x) => {
+                        if ( x['_id'] === id ) {
+                            this.contacts.splice( x );
+                        }
+
+                    });
+                }
+            });
     }
 
 }

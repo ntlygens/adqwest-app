@@ -1,14 +1,22 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
 import { ContactsComponent } from './contacts/contacts.component';
 
-import { MdCardModule, MdButtonModule, MdListModule, MdIconModule, MdToolbarModule } from '@angular/material';
+import {
+    MdCardModule,
+    MdButtonModule,
+    MdListModule,
+    MdIconModule,
+    MdToolbarModule,
+    MdButtonToggleModule
+    } from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -17,14 +25,17 @@ import { MdCardModule, MdButtonModule, MdListModule, MdIconModule, MdToolbarModu
   ],
   imports: [
     BrowserModule,
+      CommonModule,
       FormsModule,
+      ReactiveFormsModule,
       HttpModule,
       BrowserAnimationsModule,
       MdCardModule,
       MdButtonModule,
       MdListModule,
       MdIconModule,
-      MdToolbarModule
+      MdToolbarModule,
+      MdButtonToggleModule
   ],
   providers: [],
   bootstrap: [AppComponent]

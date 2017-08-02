@@ -21,7 +21,7 @@ const Contact = require('../models/contacts');
         });
 
         newContact.save((err, contact) => {
-            if (err){
+            if (err) {
                 res.json({msg: 'Falied to add Contact'});
             } else {
                 res.json({msg: 'Contact added'});

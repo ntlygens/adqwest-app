@@ -3,5 +3,4 @@ export enum Contact {
     first_name,
     last_name,
     phone
-
 }

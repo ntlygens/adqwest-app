@@ -2,7 +2,7 @@
     <form [formGroup]="addContactForm" (submit)="addContact()">
         <div formGroupName="name">
             <label for="first_name">First Name</label>
-            <input type="text" id="first_name" [(ngModel)]="first_name" class="form-control" formControlName="first_name" placeholder="firstname" required>
+            <input type="text" id="first_name" name="first_name" [(ngModel)]="first_name" class="form-control" formControlName="first_name" placeholder="firstname" required>
             <label for="last_name">Last Name</label>
             <input type="text" id="last_name" [(ngModel)]="last_name" class="form-control" formControlName="last_name" placeholder="lastname" required>
             <label for="phone">Phone</label>

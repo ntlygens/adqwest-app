@@ -53,7 +53,16 @@ export class ContactsComponent implements OnInit {
             this.contactSrvc.addContacts(newContact)
                 .subscribe(contact => {
                     this.contacts.push(contact);
-                });
+                },
+                    err => {
+                        console.log('Error: Contact not added...');
+                    },
+                    () => {
+                        this.contactSrvc.getContacts()
+                            .subscribe( contacts =>
+                                this.contacts = contacts
+                            );
+                    });
         }
         this.addContactForm.reset();
         this.con2add = false;
@@ -63,12 +72,17 @@ export class ContactsComponent implements OnInit {
         this.contactSrvc.deleteContacts(id)
             .subscribe( data => {
                 if (data.n === 1) {
-                    this.contacts.forEach( (x) => {
+                    for (let i = 0; i < this.contacts.length; i++) {
+                        if (this.contacts[i]['_id'] === id) {
+                            this.contacts.splice(i, 1);
+                        }
+                    }
+                    /*this.contacts.forEach( (x) => {
                         if ( x['_id'] === id ) {
-                            this.contacts.splice( x );
+                            this.contacts.splice( x, 1 );
                         }
 
-                    });
+                    });*/
                 }
             });
     }

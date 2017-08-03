@@ -37,7 +37,7 @@ app.use(cors());
 app.use(bodyparser.json());
 
 // static files
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'dist')));
 
 // main api routes
 app.use('/api', mainApiRoutes);

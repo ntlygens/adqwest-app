@@ -1,0 +1,66 @@
+<md-toolbar class="navbar navbar-inverse container-fluid" color="">
+    <div class="navbar-header">
+        <button (click)="isCollapsed = !isCollapsed"
+                class="navbar-toggle navbar-collapse"
+                aria-controls="bd-main-nav"
+                aria-label="Toggle navigation"
+        >
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a (click)="isCollapsed = true" class="navbar-brand hidden-sm-up" [routerLink]="[homeButton.path]">
+            <md-icon>home</md-icon>
+        </a>
+    </div>
+    <div class="navbar-toggle navbar-collapse" id="bd-main-nav"
+         [attr.aria-expanded]="!isCollapsed" [ngClass]="{collapse: isCollapsed}">
+        <ul class="nav navbar-nav">
+            <!--<li (click)="isCollapsed = true" class="nav-item" routerLinkActive="active">
+                <a class="navbar-brand hidden-xs-down" [routerLink]="[homeButton.path]">{{homeButton.title}}</a>
+            </li>-->
+            <li (click)="isCollapsed = true" *ngFor="let menuBtn of menuButtons" class="" [ngClass]="getMenuItemClasses(menuBtn)">
+                <a class="" [routerLink]="[menuBtn.path]" routerLinkActive="active">{{menuBtn.title}}</a>
+            </li>
+        </ul>
+    </div>
+</md-toolbar>
+
+<!--<nav class="navbar navbar-fixed-top navbar-toggleable-md navbar-light bg-faded nav-btm-spcr">
+  <div class="clearfix">
+    <button (click)="isCollapsed = !isCollapsed"
+            class="navbar-toggler navbar-toggler-right hidden-sm-up" type="button"
+            aria-controls="bd-main-nav"
+            aria-label="Toggle navigation">
+      <span class="glyphicon glyphicons-folder-new"></span>
+      {{menuIcon}}
+    </button>
+    <a (click)="isCollapsed = true" class="navbar-brand hidden-sm-up" [routerLink]="[homeButton.path]">
+      <img src="" class="d-inline-block align-top glyphicon-home" alt="">
+      {{homeButton.title}}
+    </a>
+  </div>
+  <div class="navbar-toggleable-xs navbar-collapse" id="bd-main-nav"
+       [attr.aria-expanded]="!isCollapsed" [ngClass]="{collapse: isCollapsed}">
+    <ul class="nav navbar-nav">
+      <li (click)="isCollapsed = true" class="nav-item" routerLinkActive="active">
+        <a class="navbar-brand hidden-xs-down" [routerLink]="[homeButton.path]">{{homeButton.title}}</a>
+      </li>
+      <li (click)="isCollapsed = true" *ngFor="let menuBtn of menuButtons" class="nav-item" routerLinkActive="active" [ngClass]="getMenuItemClasses(menuBtn)">
+        <a class="nav-item nav-link" [routerLink]="[menuBtn.path]" routerLinkActive="active">{{menuBtn.title}}</a>
+      </li>
+    </ul>
+  </div>
+</nav>-->
+
+
+
+<!--
+<div>
+    <md-toolbar color="primary">
+        <md-button-toggle>Item</md-button-toggle>
+        <md-button-toggle>Item3</md-button-toggle>
+
+        <md-button-toggle>Item2</md-button-toggle>
+    </md-toolbar>
+</div>-->

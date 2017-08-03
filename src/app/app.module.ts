@@ -3,11 +3,15 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-
+import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
-import { ContactsComponent } from './contacts/contacts.component';
+
+import { HomeModule } from './home/home.module';
+import { HeaderModule } from './header/header.module';
+import { FooterModule } from './footer/footer.module';
+
 
 import {
     MdCardModule,
@@ -16,12 +20,11 @@ import {
     MdIconModule,
     MdToolbarModule,
     MdButtonToggleModule
-    } from '@angular/material';
+} from '@angular/material';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    ContactsComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
@@ -29,7 +32,11 @@ import {
       FormsModule,
       ReactiveFormsModule,
       HttpModule,
+      RouterModule.forRoot([]),
       BrowserAnimationsModule,
+      HomeModule,
+      HeaderModule,
+      FooterModule,
       MdCardModule,
       MdButtonModule,
       MdListModule,

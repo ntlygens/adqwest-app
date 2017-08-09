@@ -1,12 +1,12 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const bodyparser = require('body-parser');
+const bodyParser = require('body-parser');
 const cors = require('cors');
 const path = require('path');
 
 const app = express();
 
-const mainApiRoutes = require('./routes/main-api-routes.ts');
+const mainApiRoutes = require('./routes/contacts-api-routes.ts');
 
 
 
@@ -34,15 +34,16 @@ const port = 3000;
 app.use(cors());
 
 // body - parser
-app.use(bodyparser.json());
+app.use(bodyParser.json());
 
 // static files
-app.use(express.static(path.join(__dirname, 'dist')));
+// app.use(express.static(path.join(__dirname, 'public')));
 
 // main api routes
 app.use('/api', mainApiRoutes);
 
 // test server
+// app.use('/', mainApiRoutes);
 app.get('/', (req, res) => {
     res.send('Were at the Start');
 });

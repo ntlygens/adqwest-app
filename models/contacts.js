@@ -1,19 +1,24 @@
 const mongoose = require('mongoose');
 
-
-
 const ContactSchema = mongoose.Schema({
     first_name: {
         type: String,
-        required: true
+        label: "First",
+        required: true,
+        max: 45
     },
     last_name: {
         type: String,
-        required: true
+        label: "Last",
+        required: true,
+        max: 65
     },
     phone: {
-        type: Number,
-        required: true
+        type: String,
+        label: "Phone",
+        required: false,
+        regEx: "/^\d{10}$/",
+        max: 10
     }
 });
 

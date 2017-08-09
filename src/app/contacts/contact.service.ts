@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers } from '@angular/http';
-import { Contact } from './contact.enum';
 import 'rxjs/add/operator/map';
 
 
@@ -20,13 +19,13 @@ export class ContactService {
     addContacts(newContact) {
         const headers = new Headers();
         headers.append('Content-type', 'application/json');
-        return this.http.post('http://localhost:3000/api/contacts', newContact)
+        return this.http.post('http://localhost:3000/api/contact', newContact)
             .map(res => res.json());
     }
 
     // delete contact
     deleteContacts(id) {
-        return this.http.delete('http://localhost:3000/api/contacts/' + id)
+        return this.http.delete('http://localhost:3000/api/contact/' + id)
             .map( res => res.json());
     }
 }

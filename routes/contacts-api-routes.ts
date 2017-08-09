@@ -13,7 +13,7 @@ const Contact = require('../models/contacts');
     });
 
     // add contact data
-    router.post('/contacts', (req, res, next) => {
+    router.post('/contact', (req, res, next) => {
         const newContact = new Contact({
             first_name: req.body.first_name,
             last_name: req.body.last_name,
@@ -30,7 +30,7 @@ const Contact = require('../models/contacts');
     });
 
     // delete contact data
-    router.delete('/contacts/:id', (req, res, next) => {
+    router.delete('/contact/:id', (req, res, next) => {
         // function here
         Contact.remove({_id: req.params.id}, function(err, result){
             if (err) {
